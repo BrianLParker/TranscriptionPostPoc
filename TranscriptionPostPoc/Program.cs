@@ -28,6 +28,7 @@ namespace TranscriptionPostPoc
                 Audio = m4aStream,
                 File = "Welcome.m4a",
                 Model = "whisper-1",
+                Temperature = 0.1D,
                 Language = "en"
             };
 
@@ -37,13 +38,6 @@ namespace TranscriptionPostPoc
                      someTranscription);
 
             Console.WriteLine(response.Text);
-        }
-
-        private static Stream GetEmbeddedResourceStream()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-
-            return assembly.GetManifestResourceStream(name: "TranscriptionPostPoc.Resources.Welcome.m4a");
         }
 
         private static IRESTFulApiFactoryClient CreateApiClient()
@@ -81,6 +75,13 @@ namespace TranscriptionPostPoc
                 config.GetSection(key: "OpenAI").Get<OpenAIConfigurations>();
 
             return openAIConfigurations;
+        }
+
+        private static Stream GetEmbeddedResourceStream()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+
+            return assembly.GetManifestResourceStream(name: "TranscriptionPostPoc.Resources.Welcome.m4a");
         }
     }
 }
