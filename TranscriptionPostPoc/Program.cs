@@ -23,7 +23,7 @@ namespace TranscriptionPostPoc
 
             Stream m4aStream = GetEmbeddedResourceStream();
 
-            ExternalTranscriptionRequest someTranscription = new ExternalTranscriptionRequest
+            var transcriptionRequest = new ExternalTranscriptionRequest
             {
                 Audio = m4aStream,
                 File = "Welcome.m4a",
@@ -35,7 +35,7 @@ namespace TranscriptionPostPoc
             var response =
                  await apiClient.PostFormAsync<ExternalTranscriptionRequest, ExternalTranscriptionResponse>(
                      relativeUrl: "v1/audio/transcriptions",
-                     someTranscription);
+                     transcriptionRequest);
 
             Console.WriteLine(response.Text);
         }
