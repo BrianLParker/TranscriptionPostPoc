@@ -1,6 +1,8 @@
 # Transcription Post POC
 
-Set Environment Variables
+This is a temporary repository to demonstrate transcription posting with non string and optional properties
+
+For the console application to work you must set the following environment variables.
 
  - OpenAI__ApiKey
  - OpenAI__ApiUrl
@@ -9,4 +11,4 @@ Set Environment Variables
 ```
 SETX OpenAI__ApiKey YOURKEY
 ```
-Set all three.
+

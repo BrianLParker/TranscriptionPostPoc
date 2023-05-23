@@ -49,6 +49,7 @@ namespace TranscriptionPostPoc
         private static IRESTFulApiFactoryClient CreateApiClient()
         {
             OpenAIConfigurations openAIConfigurations = GetApiConfigFromEnvironmentVariables();
+            openAIConfigurations.ApiUrl ??= "https://api.openai.com/";
 
             var httpClient = new HttpClient()
             {
