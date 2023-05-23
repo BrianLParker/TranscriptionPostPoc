@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\test.mp3" />
+    <None Remove="Resources\Welcome.m4a" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\test.mp3" />
+    <EmbeddedResource Include="Resources\Welcome.m4a" />
   </ItemGroup>
   
   <ItemGroup>

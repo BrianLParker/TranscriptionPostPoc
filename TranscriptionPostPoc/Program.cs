@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+// Copyright (c) The Standard Organization: A coalition of the Good-Hearted Engineers
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -7,6 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using RESTFulSense.Clients;
 using Standard.AI.OpenAI.Models.Configurations;
+using TranscriptionPostPoc.Models;
 
 namespace TranscriptionPostPoc
 {
@@ -16,15 +21,14 @@ namespace TranscriptionPostPoc
         {
             IRESTFulApiFactoryClient apiClient = CreateApiClient();
 
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            Stream stream = assembly.GetManifestResourceStream(name: "TranscriptionPostPoc.Resources.test.mp3");
+            Stream m4aStream = GetEmbeddedResourceStream();
 
             ExternalTranscriptionRequest someTranscription = new ExternalTranscriptionRequest
             {
-                Audio = stream,
-                File = "test.mp3",
+                Audio = m4aStream,
+                File = "Welcome.m4a",
                 Model = "whisper-1",
-                Language = "en",
+                Language = "en"
             };
 
             var response =
@@ -33,6 +37,13 @@ namespace TranscriptionPostPoc
                      someTranscription);
 
             Console.WriteLine(response.Text);
+        }
+
+        private static Stream GetEmbeddedResourceStream()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+
+            return assembly.GetManifestResourceStream(name: "TranscriptionPostPoc.Resources.Welcome.m4a");
         }
 
         private static IRESTFulApiFactoryClient CreateApiClient()

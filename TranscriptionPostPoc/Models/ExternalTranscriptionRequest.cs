@@ -1,7 +1,11 @@
-﻿using System.IO;
+﻿// ----------------------------------------------------------------------------------
+// Copyright (c) The Standard Organization: A coalition of the Good-Hearted Engineers
+// ----------------------------------------------------------------------------------
+
+using System.IO;
 using RESTFulSense.Models.Attributes;
 
-namespace TranscriptionPostPoc
+namespace TranscriptionPostPoc.Models
 {
     public class ExternalTranscriptionRequest
     {
